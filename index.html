@@ -3228,11 +3228,119 @@
     }
     #flash-group-login.flash-group-login .iteration-body {
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-rows:auto minmax(0,1fr) auto;
       gap:12px;
       flex:1 1 auto;
       min-height:0;
       padding:16px;
+    }
+    #flash-group-login.flash-group-login .version-tabs {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      flex:0 0 auto;
+      padding:4px;
+      border:1px solid #ebe9e3;
+      border-radius:12px;
+      background:#f8f7f3;
+    }
+    #flash-group-login.flash-group-login .version-tab {
+      border:0;
+      border-radius:9px;
+      padding:9px 10px;
+      color:var(--muted);
+      background:transparent;
+      font:760 13px/1.1 var(--number-font);
+      cursor:pointer;
+      transition:background .18s ease, color .18s ease, box-shadow .18s ease;
+    }
+    #flash-group-login.flash-group-login .version-tab.is-active {
+      color:var(--ink);
+      background:#fff;
+      box-shadow:0 6px 14px rgba(39,49,58,.08);
+    }
+    #flash-group-login.flash-group-login .version-viewer {
+      position:relative;
+      display:grid;
+      min-height:0;
+      border:1px solid #ebe9e3;
+      border-radius:14px;
+      background:#fff;
+      overflow:hidden;
+      cursor:pointer;
+    }
+    #flash-group-login.flash-group-login .version-panel {
+      grid-area:1 / 1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:0;
+      padding:12px;
+      opacity:0;
+      transform:translateX(18px) scale(.99);
+      pointer-events:none;
+      transition:opacity .28s ease, transform .36s cubic-bezier(.22,1,.36,1);
+    }
+    #flash-group-login.flash-group-login .version-panel.is-active {
+      opacity:1;
+      transform:translateX(0) scale(1);
+      pointer-events:auto;
+    }
+    #flash-group-login.flash-group-login .version-panel img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      border-radius:10px;
+      box-shadow:0 8px 20px rgba(39,49,58,.1);
+    }
+    #flash-group-login.flash-group-login .version-zoom {
+      position:absolute;
+      z-index:3;
+      top:12px;
+      right:12px;
+      display:grid;
+      place-items:center;
+      width:34px;
+      height:34px;
+      border:1px solid rgba(30,32,36,.16);
+      border-radius:50%;
+      color:var(--ink);
+      background:rgba(255,255,255,.94);
+      box-shadow:0 8px 20px rgba(39,49,58,.12);
+      cursor:zoom-in;
+    }
+    #flash-group-login.flash-group-login .version-zoom::before {
+      content:"";
+      width:13px;
+      height:13px;
+      border:2px solid currentColor;
+      border-radius:50%;
+      transform:translate(-1px,-1px);
+    }
+    #flash-group-login.flash-group-login .version-zoom::after {
+      content:"";
+      position:absolute;
+      width:8px;
+      height:2px;
+      border-radius:2px;
+      background:currentColor;
+      transform:translate(8px,8px) rotate(45deg);
+    }
+    #flash-group-login.flash-group-login .version-copy {
+      flex:0 0 auto;
+      margin:0;
+      padding:12px 14px;
+      border:1px solid #ebe9e3;
+      border-radius:12px;
+      color:var(--body-copy);
+      background:#fffdf8;
+      font-size:13px;
+      line-height:1.45;
+    }
+    #flash-group-login.flash-group-login .version-copy strong {
+      margin-right:8px;
+      color:var(--ink);
+      font-size:14px;
     }
     #flash-group-login.flash-group-login .iteration-card {
       display:flex;
@@ -4926,6 +5034,12 @@
       #flash-group-login.flash-group-login .pain-item strong { font-size:12px; line-height:1.25; }
       #flash-group-login.flash-group-login .pain-item p { font-size:10px; line-height:1.32; margin-top:4px; }
       #flash-group-login.flash-group-login .iteration-body { gap:8px; padding:10px 12px; }
+      #flash-group-login.flash-group-login .version-tabs { gap:5px; padding:3px; }
+      #flash-group-login.flash-group-login .version-tab { padding:7px 8px; font-size:11px; }
+      #flash-group-login.flash-group-login .version-panel { padding:8px; }
+      #flash-group-login.flash-group-login .version-zoom { top:8px; right:8px; width:30px; height:30px; }
+      #flash-group-login.flash-group-login .version-copy { padding:8px 10px; font-size:11px; line-height:1.34; }
+      #flash-group-login.flash-group-login .version-copy strong { font-size:12px; }
       #flash-group-login.flash-group-login .iteration-meta { padding:8px 9px 7px; }
       #flash-group-login.flash-group-login .iteration-meta span { font-size:9px; padding:4px 6px; }
       #flash-group-login.flash-group-login .iteration-meta strong { font-size:11.5px; margin-top:6px; }
@@ -5077,6 +5191,11 @@
       #pc-query.pc-query .mini-table th,
       #pc-query.pc-query .mini-table td { padding:10px 12px; }
       #pc-query.pc-query .source-note { margin:10px 24px 12px; }
+      #flash-group-login.flash-group-login .iteration-body { padding:20px; gap:16px; }
+      #flash-group-login.flash-group-login .version-tab { padding:12px 14px; font-size:15px; }
+      #flash-group-login.flash-group-login .version-panel { padding:18px; }
+      #flash-group-login.flash-group-login .version-copy { padding:16px 18px; font-size:15px; }
+      #flash-group-login.flash-group-login .version-copy strong { font-size:16px; }
       #van-feeder.van-feeder .feeder-panel { grid-template-rows:minmax(0,1.7fr) minmax(0,1.3fr); }
       #van-feeder.van-feeder .metric-card { padding:18px 20px; }
       #van-feeder.van-feeder .metric-card span { font-size:18px; }
@@ -5307,7 +5426,7 @@
 
   <main data-report-audience="product stakeholders">
     <header id="cover" class="hero" data-contract-section="title">
-      <div class="hero-top"><img class="logo zoomable" src="assets/logo.png" alt="公司 Logo"></div>
+      <div class="hero-top"><img class="logo" src="assets/logo.png" alt="公司 Logo"></div>
       <div class="hero-content">
         <div class="hero-title">
           <p class="eyebrow">Flash HR · Half-year Review</p>
@@ -6282,22 +6401,25 @@
             <h3>登录页三版迭代</h3>
             <p>从设计初稿到AI加工，再到全面升级后深度加工，最终可直接交付前端使用。</p>
           </div>
-          <div class="iteration-body">
-            <article class="iteration-card">
-              <div class="iteration-meta"><span>第一版</span><strong>设计初稿</strong></div>
-              <div class="iteration-visual"><img class="zoomable" src="assets/16-1.png" alt="Flash Group登录设计初稿"></div>
-              <p>色彩相对单一简单，完成基础页面方向。</p>
-            </article>
-            <article class="iteration-card">
-              <div class="iteration-meta"><span>第二版</span><strong>AI加工</strong></div>
-              <div class="iteration-visual"><img class="zoomable" src="assets/16-2.png" alt="Flash Group登录AI加工版本"></div>
-              <p>补充背景层次感，但元素仍然较单一。</p>
-            </article>
-            <article class="iteration-card">
-              <div class="iteration-meta"><span>第三版</span><strong>AI全面升级后深度加工</strong></div>
-              <div class="iteration-visual"><img class="zoomable" src="assets/16-3.png" alt="Flash Group登录AI全面升级版本"></div>
-              <p>全面优化UI并丰富元素，最终生成HTML，直接交付前端使用。</p>
-            </article>
+          <div class="iteration-body version-gallery" data-version-index="0" aria-label="Flash Group登录三版迭代切换展示">
+            <div class="version-tabs" role="tablist" aria-label="选择登录页版本">
+              <button class="version-tab is-active" type="button" role="tab" aria-selected="true" data-version-target="0">第一版</button>
+              <button class="version-tab" type="button" role="tab" aria-selected="false" data-version-target="1">第二版</button>
+              <button class="version-tab" type="button" role="tab" aria-selected="false" data-version-target="2">第三版</button>
+            </div>
+            <div class="version-viewer" role="button" tabindex="0" aria-label="点击切换下一版本">
+              <button class="version-zoom" type="button" aria-label="放大当前版本图片"></button>
+              <div class="version-panel is-active" data-version-panel="0">
+                <img src="assets/16-1.png" alt="Flash Group登录设计初稿">
+              </div>
+              <div class="version-panel" data-version-panel="1">
+                <img src="assets/16-2.png" alt="Flash Group登录AI加工版本">
+              </div>
+              <div class="version-panel" data-version-panel="2">
+                <img src="assets/16-3.png" alt="Flash Group登录AI全面升级版本">
+              </div>
+            </div>
+            <p class="version-copy"><strong>设计初稿</strong><span>色彩相对单一简单，完成基础页面方向。</span></p>
           </div>
         </article>
       </div>
@@ -6764,7 +6886,6 @@
     <span>/</span>
     <span class="slide-total">05</span>
   </div>
-  <div class="slide-hint">← → / ↑ ↓ 翻页</div>
 
   <div class="modal" role="dialog" aria-modal="true" aria-label="图片放大预览">
     <button class="modal-close" aria-label="关闭">×</button>
@@ -6824,6 +6945,49 @@
         if (event.key !== "Enter" && event.key !== " ") return;
         event.preventDefault();
         toggleCompare();
+      });
+    });
+    document.querySelectorAll(".version-gallery").forEach(gallery => {
+      const tabs = [...gallery.querySelectorAll(".version-tab")];
+      const panels = [...gallery.querySelectorAll(".version-panel")];
+      const viewer = gallery.querySelector(".version-viewer");
+      const copyTitle = gallery.querySelector(".version-copy strong");
+      const copyBody = gallery.querySelector(".version-copy span");
+      const copy = [
+        ["设计初稿", "色彩相对单一简单，完成基础页面方向。"],
+        ["AI加工", "补充背景层次感，但元素仍然较单一。"],
+        ["AI全面升级后深度加工", "全面优化UI并丰富元素，最终生成HTML，直接交付前端使用。"]
+      ];
+      const setVersion = index => {
+        const next = (index + panels.length) % panels.length;
+        gallery.dataset.versionIndex = String(next);
+        tabs.forEach((tab, tabIndex) => {
+          const active = tabIndex === next;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", String(active));
+        });
+        panels.forEach((panel, panelIndex) => {
+          panel.classList.toggle("is-active", panelIndex === next);
+        });
+        if (copyTitle && copyBody && copy[next]) {
+          copyTitle.textContent = copy[next][0];
+          copyBody.textContent = copy[next][1];
+        }
+      };
+      tabs.forEach(tab => {
+        tab.addEventListener("click", event => {
+          event.stopPropagation();
+          setVersion(Number(tab.dataset.versionTarget || 0));
+        });
+      });
+      viewer?.addEventListener("click", event => {
+        if (event.target.closest(".version-zoom")) return;
+        setVersion(Number(gallery.dataset.versionIndex || 0) + 1);
+      });
+      viewer?.addEventListener("keydown", event => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        setVersion(Number(gallery.dataset.versionIndex || 0) + 1);
       });
     });
     const hashIndex = slides.findIndex(slide => slide.id && `#${slide.id}` === location.hash);
@@ -7637,12 +7801,66 @@
 
     const modal = document.querySelector(".modal");
     const modalImage = modal.querySelector("img");
+    const modalGallery = { items: [], index: 0 };
+    const normalizeImageSrc = image => image.currentSrc || image.src || "";
+    const isImageUsable = image => image && !image.classList.contains("is-broken") && normalizeImageSrc(image);
+    const buildSlideImageGallery = slide => {
+      const ordered = [];
+      const seen = new Set();
+      const pushImage = image => {
+        if (!isImageUsable(image)) return;
+        const src = normalizeImageSrc(image);
+        if (seen.has(src)) return;
+        seen.add(src);
+        ordered.push({ src, alt: image.alt || "图片预览", element: image });
+      };
+
+      slide.querySelectorAll(".compare-switch").forEach(switcher => {
+        const active = switcher.querySelector(".compare-visual.is-active img");
+        pushImage(active);
+        switcher.querySelectorAll(".compare-visual img").forEach(pushImage);
+      });
+      slide.querySelectorAll(".version-gallery").forEach(gallery => {
+        const active = gallery.querySelector(".version-panel.is-active img");
+        pushImage(active);
+        gallery.querySelectorAll(".version-panel img").forEach(pushImage);
+      });
+      slide.querySelectorAll("img.zoomable, button.feedback-bubble img.feedback-source-image").forEach(pushImage);
+      return ordered;
+    };
+    const openModalGallery = (items, index = 0) => {
+      if (!items.length) return false;
+      modalGallery.items = items;
+      modalGallery.index = (index + items.length) % items.length;
+      const current = modalGallery.items[modalGallery.index];
+      modalImage.src = current.src;
+      modalImage.alt = current.alt;
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+      return true;
+    };
+    const openCurrentSlideImage = (direction = 1) => {
+      const currentSlide = slides[currentSlideIndex];
+      const items = buildSlideImageGallery(currentSlide);
+      if (!items.length) return false;
+      const index = direction < 0 && items.length > 1 ? items.length - 1 : 0;
+      return openModalGallery(items, index);
+    };
+    const shiftModalImage = direction => {
+      if (!modal.classList.contains("open") || !modalGallery.items.length) return false;
+      modalGallery.index = (modalGallery.index + direction + modalGallery.items.length) % modalGallery.items.length;
+      const current = modalGallery.items[modalGallery.index];
+      modalImage.src = current.src;
+      modalImage.alt = current.alt;
+      return true;
+    };
     document.querySelectorAll(".zoomable").forEach(image => {
       image.addEventListener("click", () => {
-        modalImage.src = image.src;
-        modalImage.alt = image.alt;
-        modal.classList.add("open");
-        document.body.style.overflow = "hidden";
+        const currentSlide = slides[currentSlideIndex];
+        const items = buildSlideImageGallery(currentSlide);
+        const src = normalizeImageSrc(image);
+        const index = Math.max(0, items.findIndex(item => item.src === src));
+        openModalGallery(items.length ? items : [{ src, alt: image.alt || "图片预览", element: image }], index);
       });
     });
     document.querySelectorAll(".compare-zoom").forEach(button => {
@@ -7651,10 +7869,24 @@
         const switcher = button.closest(".compare-switch");
         const activeImage = switcher.querySelector(".compare-visual.is-active img:not(.is-broken)");
         if (!activeImage) return;
-        modalImage.src = activeImage.src;
-        modalImage.alt = activeImage.alt;
-        modal.classList.add("open");
-        document.body.style.overflow = "hidden";
+        const currentSlide = slides[currentSlideIndex];
+        const items = buildSlideImageGallery(currentSlide);
+        const src = normalizeImageSrc(activeImage);
+        const index = Math.max(0, items.findIndex(item => item.src === src));
+        openModalGallery(items.length ? items : [{ src, alt: activeImage.alt || "图片预览", element: activeImage }], index);
+      });
+    });
+    document.querySelectorAll(".version-zoom").forEach(button => {
+      button.addEventListener("click", event => {
+        event.stopPropagation();
+        const gallery = button.closest(".version-gallery");
+        const activeImage = gallery?.querySelector(".version-panel.is-active img");
+        if (!activeImage) return;
+        const currentSlide = slides[currentSlideIndex];
+        const items = buildSlideImageGallery(currentSlide);
+        const src = normalizeImageSrc(activeImage);
+        const index = Math.max(0, items.findIndex(item => item.src === src));
+        openModalGallery(items.length ? items : [{ src, alt: activeImage.alt || "图片预览", element: activeImage }], index);
       });
     });
     document.querySelectorAll("button.feedback-bubble").forEach(bubble => {
@@ -7664,10 +7896,11 @@
         const image = bubble.querySelector(".feedback-source-image");
         bubble.classList.add("is-bursting");
         window.setTimeout(() => {
-          modalImage.src = image.src;
-          modalImage.alt = image.alt;
-          modal.classList.add("open");
-          document.body.style.overflow = "hidden";
+          const currentSlide = slides[currentSlideIndex];
+          const items = buildSlideImageGallery(currentSlide);
+          const src = normalizeImageSrc(image);
+          const index = Math.max(0, items.findIndex(item => item.src === src));
+          openModalGallery(items.length ? items : [{ src, alt: image.alt || "图片预览", element: image }], index);
 
           bubble.classList.remove("is-bursting");
           bubble.classList.add("is-resetting");
@@ -7681,6 +7914,8 @@
     const closeModal = () => {
       modal.classList.remove("open");
       modalImage.src = "";
+      modalGallery.items = [];
+      modalGallery.index = 0;
       document.body.style.overflow = "";
     };
     modal.addEventListener("click", closeModal);
@@ -7825,12 +8060,27 @@
         if (modal.classList.contains("open")) closeModal();
         return;
       }
-      if (modal.classList.contains("open")) return;
-      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(event.key)) {
+      if (modal.classList.contains("open")) {
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          shiftModalImage(1);
+        } else if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          shiftModalImage(-1);
+        }
+        return;
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        openCurrentSlideImage(1);
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        openCurrentSlideImage(-1);
+      } else if (["ArrowDown", "PageDown", " "].includes(event.key)) {
         event.preventDefault();
         if (changeTaskPoolStep(1)) return;
         goToSlide(currentSlideIndex + 1);
-      } else if (["ArrowLeft", "ArrowUp", "PageUp"].includes(event.key)) {
+      } else if (["ArrowUp", "PageUp"].includes(event.key)) {
         event.preventDefault();
         if (changeTaskPoolStep(-1)) return;
         goToSlide(currentSlideIndex - 1);
